@@ -55,18 +55,23 @@ public class StudentRepository {
 
     public void deleteTeacherAndStudents(String teacher){    //Delete Teacher and All of their Students from DB
 
-//        for(String s: teacherMap.keySet()){
-//            if(s.equals(teacher))
-                teacherMap.remove(teacher);
-//        }
+        teacherMap.remove(teacher);
 
         for(Student s: studentTeacherMap.keySet()){
 
             if(studentTeacherMap.get(s).getName().equals(teacher)) {
                 studentMap.remove(s.getName());
+            }
+        }
+
+        for(Student s: studentTeacherMap.keySet()){
+
+            if(studentTeacherMap.get(s).getName().equals(teacher)) {
                 studentTeacherMap.remove(s);
             }
         }
+
+
     }
 
     public void deleteAllfromTeacher(){                    //Delete All the Teachers and their Students from DB
@@ -79,18 +84,6 @@ public class StudentRepository {
         studentTeacherMap.clear();
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
