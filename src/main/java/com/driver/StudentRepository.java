@@ -47,7 +47,7 @@ public class StudentRepository {
 
     public List<String > getAllStudentsAdded(){                    //List of All the Students Added.
         List<String> listOfAllStudents = new ArrayList<>();
-        for(Student s:studentMap.values()){
+        for(Student s: studentMap.values()){
             listOfAllStudents.add(s.getName());
         }
         return listOfAllStudents;
@@ -57,19 +57,34 @@ public class StudentRepository {
 
         teacherMap.remove(teacher);
 
-        for(Student s: studentTeacherMap.keySet()){
+        List<Student> studentName = new ArrayList<>();
 
+        for(Student s: studentTeacherMap.keySet()){
             if(studentTeacherMap.get(s).getName().equals(teacher)) {
-                studentMap.remove(s.getName());
+                studentName.add(s);
             }
         }
 
-        for(Student s: studentTeacherMap.keySet()){
+        for(Student i: studentName){
+            studentMap.remove(i.getName());
+            studentTeacherMap.remove(i);
 
-            if(studentTeacherMap.get(s).getName().equals(teacher)) {
-                studentTeacherMap.remove(s);
-            }
         }
+
+//        for(Student s: studentTeacherMap.keySet()){
+//            if(studentTeacherMap.get(s).getName().equals(teacher)) {
+//                studentMap.remove(s.getName());
+//            }
+//        }
+
+
+
+//        for(Student s: studentTeacherMap.keySet()){
+//
+//            if(studentTeacherMap.get(s).getName().equals(teacher)) {
+//                studentTeacherMap.remove(s);
+//            }
+//        }
 
 
     }
